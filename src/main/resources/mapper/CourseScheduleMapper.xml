@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yupi.springbootinit.mapper.CourseScheduleMapper">
+
+    <resultMap id="BaseResultMap" type="com.yupi.springbootinit.model.entity.CourseSchedule">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="courseId" column="courseId" jdbcType="BIGINT"/>
+        <result property="classId" column="classId" jdbcType="BIGINT"/>
+        <result property="dayOfWeek" column="dayOfWeek" jdbcType="TINYINT"/>
+        <result property="timeSlot" column="timeSlot" jdbcType="VARCHAR"/>
+        <result property="weeks" column="weeks" jdbcType="VARCHAR"/>
+        <result property="startDate" column="startDate" jdbcType="DATE"/>
+        <result property="endDate" column="endDate" jdbcType="DATE"/>
+        <result property="createTime" column="createTime" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+        <result property="isDelete" column="isDelete" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, courseId, classId, dayOfWeek, timeSlot, weeks, startDate, endDate, createTime, updateTime, isDelete
+    </sql>
+
+    <!-- 查询指定时间段内的课程安排 -->
+    <!--<select id="getCoursesForPeriod" resultType="com.yupi.springbootinit.model.dto.courseschedule.CourseScheduleDTO">-->
+    <!--    <![CDATA[-->
+    <!--    SELECT-->
+    <!--        cs.id,-->
+    <!--        cs.courseId,-->
+    <!--        cs.classId,-->
+    <!--        cs.dayOfWeek,-->
+    <!--        cs.timeSlot,-->
+    <!--        cs.weeks,-->
+    <!--        cs.startDate,-->
+    <!--        cs.endDate,-->
+    <!--        ci.courseName,-->
+    <!--        ci.teacherName,-->
+    <!--        ci.color-->
+    <!--    FROM-->
+    <!--        course_schedule cs-->
+    <!--            JOIN-->
+    <!--        course_info ci ON cs.courseId = ci.id-->
+    <!--    WHERE-->
+    <!--        cs.isDelete = 0-->
+    <!--      AND cs.startDate <= #{endDate}-->
+    <!--      AND cs.endDate >= #{startDate}-->
+    <!--      AND cs.dayOfWeek = #{dayOfWeek}-->
+    <!--    ]]>-->
+    <!--</select>-->
+
+    <select id="getCoursesForPeriod" resultType="com.yupi.springbootinit.model.dto.courseschedule.CourseScheduleDTO">
+        <![CDATA[
+        SELECT
+        cs.id,
+        cs.courseId,
+        cs.classId,
+        cs.dayOfWeek,
+        cs.timeSlot,
+        cs.weeks,
+        cs.startDate,
+        cs.endDate,
+        ci.courseName,
+        ci.teacherName,
+        ci.color
+        FROM
+        course_schedule cs
+        JOIN
+        course_info ci ON cs.courseId = ci.id
+        WHERE
+        cs.isDelete = 0
+        AND cs.classId = #{classId}
+        AND cs.startDate <= #{endDate}
+        AND cs.endDate >= #{startDate}
+        AND cs.dayOfWeek = #{dayOfWeek}
+        ]]>
+    </select>
+
+</mapper>
