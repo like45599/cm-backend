@@ -75,50 +75,6 @@ public class CourseScheduleServiceImpl extends ServiceImpl<CourseScheduleMapper,
     }
 
     @Override
-    public List<CourseScheduleDTO> getCoursesByDateAndDayOfWeek(LocalDate date, int dayOfWeek) {
-        QueryWrapper<CourseSchedule> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("isDelete", 0);
-        queryWrapper.le("startDate", date);
-        queryWrapper.ge("endDate", date);
-        queryWrapper.eq("dayOfWeek", dayOfWeek);
-
-        List<CourseSchedule> courseSchedules = this.list(queryWrapper);
-        return courseSchedules.stream().map(course -> {
-            CourseScheduleDTO dto = new CourseScheduleDTO();
-            // 复制属性到DTO对象
-            BeanUtils.copyProperties(course, dto);
-            // 可以通过Mapper查询相关课程名称、教师名称等
-            CourseInfo courseInfo = courseInfoService.getById(course.getCourseId());
-            dto.setCourseName(courseInfo.getCourseName());
-            dto.setTeacherName(courseInfo.getTeacherName());
-            dto.setColor(courseInfo.getColor());
-            return dto;
-        }).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<CourseScheduleDTO> getCoursesByDateAndDayOfWeekAndClassId(LocalDate date, int dayOfWeek, Long classId) {
-        QueryWrapper<CourseSchedule> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("isDelete", 0);
-        queryWrapper.le("startDate", date);
-        queryWrapper.ge("endDate", date);
-        queryWrapper.eq("dayOfWeek", dayOfWeek);
-        queryWrapper.eq("classId", classId);  // 过滤指定 classId
-
-        List<CourseSchedule> courseSchedules = this.list(queryWrapper);
-        return courseSchedules.stream().map(course -> {
-            CourseScheduleDTO dto = new CourseScheduleDTO();
-            // 复制属性到DTO对象
-            BeanUtils.copyProperties(course, dto);
-            // 通过CourseInfoService查询课程详细信息
-            CourseInfo courseInfo = courseInfoService.getById(course.getCourseId());
-            dto.setCourseName(courseInfo.getCourseName());
-            dto.setTeacherName(courseInfo.getTeacherName());
-            dto.setColor(courseInfo.getColor());
-            return dto;
-        }).collect(Collectors.toList());
-    }
-    @Override
     public List<CourseScheduleDTO> getCoursesByDateAndClassId(LocalDate date, Long classId) {
         // 获取当前日期是学期的第几周
         LocalDate semesterStartDate = LocalDate.of(2024, 9, 1); // 假设学期从9月1日开始
@@ -146,7 +102,7 @@ public class CourseScheduleServiceImpl extends ServiceImpl<CourseScheduleMapper,
                     if (courseInfo != null) {
                         dto.setCourseName(courseInfo.getCourseName());
                         dto.setTeacherName(courseInfo.getTeacherName());
-                        dto.setColor(courseInfo.getColor());
+                        dto.setClassRoom(courseInfo.getClassRoom());
                     }
                     return dto;
                 })

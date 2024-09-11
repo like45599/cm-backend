@@ -21,4 +21,11 @@ public interface ClassOfficersService extends IService<ClassOfficers> {
      * @return
      */
     QueryWrapper<ClassOfficers> getQueryWrapper(ClassOfficersQueryRequest classofficersQueryRequest);
+
+    /**
+     *
+     * @param userId
+     * @return
+     */
+    ClassOfficers getByUserId(Long userId);
 }

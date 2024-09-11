@@ -50,7 +50,23 @@ public class ClassOfficersServiceImpl extends ServiceImpl<ClassOfficersMapper, C
 
         return queryWrapper;
     }
+    @Override
+    public ClassOfficers getByUserId(Long userId) {
+        if (userId == null || userId <= 0) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "无效的用户 ID");
+        }
 
+        // 根据用户 ID 查询班级干部信息
+        QueryWrapper<ClassOfficers> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("userId", userId).eq("isDelete", 0);
+
+        ClassOfficers classOfficer = this.getOne(queryWrapper);
+        if (classOfficer == null) {
+            throw new BusinessException(ErrorCode.NOT_FOUND_ERROR, "未找到对应的班级干部信息");
+        }
+
+        return classOfficer;
+    }
 }
 
 

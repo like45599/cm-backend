@@ -31,14 +31,15 @@ public class CourseInfoServiceImpl extends ServiceImpl<CourseInfoMapper, CourseI
         }
 
         String courseName = courseInfoQueryRequest.getCourseName();
+        String classRoom = courseInfoQueryRequest.getClassRoom();
         String teacherName = courseInfoQueryRequest.getTeacherName();
-
         String sortField = courseInfoQueryRequest.getSortField();
         String sortOrder = courseInfoQueryRequest.getSortOrder();
 
         QueryWrapper<CourseInfo> queryWrapper = new QueryWrapper<>();
 
         queryWrapper.eq(StringUtils.isNotBlank(courseName), "courseName", courseName);
+        queryWrapper.eq(StringUtils.isNotBlank(classRoom), "classRoom", classRoom);
         queryWrapper.eq(StringUtils.isNotBlank(teacherName), "teacherName", teacherName);
 
         // 排序

@@ -17,7 +17,7 @@ public interface ClassNoticesService extends IService<ClassNotices> {
     /**
      * 获取查询条件
      *
-     * @param classofficersQueryRequest
+     * @param classNoticesQueryRequest
      * @return
      */
     QueryWrapper<ClassNotices> getQueryWrapper(ClassNoticesQueryRequest classNoticesQueryRequest);

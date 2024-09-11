@@ -8,7 +8,7 @@
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="courseName" column="courseName" jdbcType="VARCHAR"/>
             <result property="teacherName" column="teacherName" jdbcType="VARCHAR"/>
-            <result property="color" column="color" jdbcType="VARCHAR"/>
+            <result property="classRoom" column="classRoom" jdbcType="VARCHAR"/>
             <result property="createTime" column="createTime" jdbcType="TIMESTAMP"/>
             <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
             <result property="isDelete" column="isDelete" jdbcType="TINYINT"/>
@@ -16,7 +16,7 @@
 
     <sql id="Base_Column_List">
         id,courseName,teacherName,
-        color,createTime,updateTime,
+        classRoom,createTime,updateTime,
         isDelete
     </sql>
 </mapper>

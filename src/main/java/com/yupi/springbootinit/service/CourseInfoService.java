@@ -13,5 +13,10 @@ import com.yupi.springbootinit.model.entity.CourseSchedule;
 * @createDate 2024-09-03 00:56:33
 */
 public interface CourseInfoService extends IService<CourseInfo> {
+    /**
+     * 获取查询条件
+     * @param courseInfoQueryRequest
+     * @return
+     */
     QueryWrapper<CourseInfo> getQueryWrapper(CourseInfoQueryRequest courseInfoQueryRequest);
 }

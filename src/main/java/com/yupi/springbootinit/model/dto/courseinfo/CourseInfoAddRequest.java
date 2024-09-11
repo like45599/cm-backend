@@ -22,9 +22,9 @@ public class CourseInfoAddRequest implements Serializable {
     private String teacherName;
 
     /**
-     * 课程展示颜色
+     *
      */
-    private String color;
+    private String classRoom;
 
     private static final long serialVersionUID = 1L;
 }

@@ -21,5 +21,7 @@ public class CourseInfoQueryRequest extends PageRequest implements Serializable 
      */
     private String teacherName;
 
+    private String classRoom;
+
     private static final long serialVersionUID = 1L;
 }

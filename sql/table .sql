@@ -101,21 +101,11 @@ CREATE TABLE IF NOT EXISTS course_info (
      id BIGINT AUTO_INCREMENT PRIMARY KEY,
      courseName VARCHAR(256) NOT NULL COMMENT '课程名称',
      teacherName VARCHAR(256) NOT NULL COMMENT '教师名称',
-     color VARCHAR(7) NOT NULL COMMENT '课程展示颜色',
+     classRoom VARCHAR(256) NOT NULL COMMENT '上课教室',
      createTime DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL COMMENT '创建时间',
      updateTime DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
      isDelete TINYINT DEFAULT 0 NOT NULL COMMENT '是否删除'
 ) COMMENT '课程信息表' COLLATE = utf8mb4_unicode_ci;
-
-INSERT INTO course_info (courseName, teacherName, color, createTime, updateTime, isDelete)
-VALUES
-    ('Mathematics', 'Professor Smith', '#FF5733', NOW(), NOW(), 0),
-    ('Physics', 'Professor Johnson', '#33FF57', NOW(), NOW(), 0),
-    ('Chemistry', 'Professor Brown', '#3357FF', NOW(), NOW(), 0),
-    ('Biology', 'Professor Davis', '#FF33A1', NOW(), NOW(), 0),
-    ('History', 'Professor Miller', '#FFC300', NOW(), NOW(), 0)
-;
-
 
 # 课程管理表
 CREATE TABLE IF NOT EXISTS course_schedule (
@@ -133,6 +123,16 @@ CREATE TABLE IF NOT EXISTS course_schedule (
        FOREIGN KEY (courseId) REFERENCES course_info(id) ON DELETE CASCADE, -- 外键，引用课程信息表
        FOREIGN KEY (classId) REFERENCES classes(id) ON DELETE CASCADE -- 外键，引用班级表
 ) COMMENT '课程安排表' COLLATE = utf8mb4_unicode_ci;
+
+
+INSERT INTO course_info (courseName, teacherName, color, createTime, updateTime, isDelete)
+VALUES
+    ('Mathematics', 'Professor Smith', '#FF5733', NOW(), NOW(), 0),
+    ('Physics', 'Professor Johnson', '#33FF57', NOW(), NOW(), 0),
+    ('Chemistry', 'Professor Brown', '#3357FF', NOW(), NOW(), 0),
+    ('Biology', 'Professor Davis', '#FF33A1', NOW(), NOW(), 0),
+    ('History', 'Professor Miller', '#FFC300', NOW(), NOW(), 0)
+;
 
 
 INSERT INTO course_schedule (courseId, classId, dayOfWeek, timeSlot, weeks, startDate, endDate, createTime, updateTime, isDelete) VALUES

@@ -87,7 +87,7 @@ public class ClassActivitiesController {
     }
 
     @PostMapping("/list/page")
-    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
+    //@AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     public BaseResponse<Page<ClassActivities>> listClassActivitiesByPage(@RequestBody ClassActivitiesQueryRequest classActivitiesQueryRequest,
                                                                          HttpServletRequest request) {
         long current = classActivitiesQueryRequest.getCurrent();

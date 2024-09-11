@@ -35,7 +35,7 @@ public class CourseInfo implements Serializable {
     /**
      * 课程展示颜色
      */
-    private String color;
+    private String classRoom;
 
     /**
      * 创建时间
@@ -70,7 +70,7 @@ public class CourseInfo implements Serializable {
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
                 && (this.getCourseName() == null ? other.getCourseName() == null : this.getCourseName().equals(other.getCourseName()))
                 && (this.getTeacherName() == null ? other.getTeacherName() == null : this.getTeacherName().equals(other.getTeacherName()))
-                && (this.getColor() == null ? other.getColor() == null : this.getColor().equals(other.getColor()))
+                && (this.getClassRoom() == null ? other.getClassRoom() == null : this.getClassRoom().equals(other.getClassRoom()))
                 && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
                 && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
                 && (this.getIsDelete() == null ? other.getIsDelete() == null : this.getIsDelete().equals(other.getIsDelete()));
@@ -83,7 +83,7 @@ public class CourseInfo implements Serializable {
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getCourseName() == null) ? 0 : getCourseName().hashCode());
         result = prime * result + ((getTeacherName() == null) ? 0 : getTeacherName().hashCode());
-        result = prime * result + ((getColor() == null) ? 0 : getColor().hashCode());
+        result = prime * result + ((getClassRoom() == null) ? 0 : getClassRoom().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         result = prime * result + ((getIsDelete() == null) ? 0 : getIsDelete().hashCode());
@@ -99,7 +99,7 @@ public class CourseInfo implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", coursename=").append(courseName);
         sb.append(", teachername=").append(teacherName);
-        sb.append(", color=").append(color);
+        sb.append(", classroom=").append(classRoom);
         sb.append(", createtime=").append(createTime);
         sb.append(", updatetime=").append(updateTime);
         sb.append(", isdelete=").append(isDelete);

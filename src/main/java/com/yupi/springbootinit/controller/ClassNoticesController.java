@@ -103,7 +103,7 @@ public class ClassNoticesController {
     }
 
     @PostMapping("/list/page")
-    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
+    //@AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     public BaseResponse<Page<ClassNotices>> listClassNoticesByPage(@RequestBody ClassNoticesQueryRequest classNoticesQueryRequest,
                                                                    HttpServletRequest request) {
         long current = classNoticesQueryRequest.getCurrent();

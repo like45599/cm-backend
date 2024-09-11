@@ -15,11 +15,18 @@ import java.util.List;
 * @createDate 2024-09-03 00:52:21
 */
 public interface CourseScheduleService extends IService<CourseSchedule> {
+    /**
+     * 获取查询条件
+     * @param courseScheduleQueryRequest
+     * @return
+     */
     QueryWrapper<CourseSchedule> getQueryWrapper(CourseScheduleQueryRequest courseScheduleQueryRequest);
 
-    List<CourseScheduleDTO> getCoursesByDateAndDayOfWeek(LocalDate date, int dayOfWeek);
-
-    List<CourseScheduleDTO> getCoursesByDateAndDayOfWeekAndClassId(LocalDate date, int dayOfWeek, Long classId);
-
+    /**
+     * 根据日期和班级id获取课程
+     * @param date
+     * @param classId
+     * @return
+     */
     List<CourseScheduleDTO> getCoursesByDateAndClassId(LocalDate date, Long classId);
 }

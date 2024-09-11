@@ -32,5 +32,5 @@ public class CourseScheduleDTO {
 
     private String teacherName;
 
-    private String color;
+    private String classRoom;
 }

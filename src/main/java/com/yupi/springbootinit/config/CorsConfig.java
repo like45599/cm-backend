@@ -25,6 +25,7 @@ public class CorsConfig implements WebMvcConfigurer {
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .exposedHeaders("*")
+                .maxAge(3600) // 预检请求的缓存时间
                 .allowCredentials(true);
 
     }

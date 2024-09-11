@@ -22,5 +22,10 @@ public interface StudentInfoService extends IService<StudentInfo> {
      */
     QueryWrapper<StudentInfo> getQueryWrapper(StuQueryRequest stuQueryRequest);
 
+    /**
+     * 根据学号获取班级id
+     * @param studentNum
+     * @return
+     */
     Long getClassIdByStudentNum(String studentNum);
 }
